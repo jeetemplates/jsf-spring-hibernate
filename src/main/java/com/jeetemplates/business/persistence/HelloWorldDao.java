@@ -1,10 +1,10 @@
 /**
  * 
  */
-package com.jeetemplates.helloworld.persistence;
+package com.jeetemplates.business.persistence;
 
+import com.jeetemplates.business.model.HelloWorld;
 import com.jeetemplates.common.persistence.BusinessDao;
-import com.jeetemplates.helloworld.model.HelloWorld;
 
 /**
  * DAO of HelloWorld

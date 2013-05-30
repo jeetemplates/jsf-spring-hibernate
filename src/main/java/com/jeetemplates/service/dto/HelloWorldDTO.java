@@ -1,16 +1,16 @@
 /**
  * 
  */
-package com.jeetemplates.helloworld.dto;
+package com.jeetemplates.service.dto;
 
-import com.jeetemplates.common.dto.BusinessDto;
+import com.jeetemplates.common.dto.GenericDTO;
 
 /**
  * Hello world dto
  * 
  * @author jeetemplates
  */
-public class HelloWorldDto extends BusinessDto {
+public class HelloWorldDTO extends GenericDTO {
 
 	/**
 	 * Serial UID.

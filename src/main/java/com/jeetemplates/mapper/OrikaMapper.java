@@ -7,9 +7,9 @@ import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.ConfigurableMapper;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
 
-import com.jeetemplates.helloworld.dto.HelloWorldDto;
-import com.jeetemplates.helloworld.form.HelloWorldForm;
-import com.jeetemplates.helloworld.model.HelloWorld;
+import com.jeetemplates.business.model.HelloWorld;
+import com.jeetemplates.service.dto.HelloWorldDTO;
+import com.jeetemplates.web.form.HelloWorldForm;
 
 /**
  * Orika mapper.
@@ -22,7 +22,7 @@ public class OrikaMapper extends ConfigurableMapper {
 	public void configure(MapperFactory mapperFactory) {
 		// register class maps, Mappers, ObjectFactories, and Converters
 		mapperFactory.registerClassMap(mapperFactory
-				.classMap(HelloWorld.class, HelloWorldDto.class)
+				.classMap(HelloWorld.class, HelloWorldDTO.class)
 				.field("lastName", "lastName")
 				.field("firstName", "firstName")
 				.toClassMap());

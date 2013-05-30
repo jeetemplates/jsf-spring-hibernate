@@ -25,9 +25,7 @@ public final class LoggerUtils {
 	 *            : message to display
 	 */
 	public static void logDebug(String message) {
-		if (logger.isDebugEnabled()) {
-			logger.debug(message);
-		}
+		logger.debug(message);
 	}
 
 	/**
@@ -37,9 +35,27 @@ public final class LoggerUtils {
 	 *            : message to display
 	 */
 	public static void logInfo(String message) {
-		if (logger.isInfoEnabled()) {
-			logger.info(message);
-		}
+		logger.info(message);
+	}
+
+	/**
+	 * Log debug start of a method.
+	 * 
+	 * @param method
+	 *            : method name
+	 */
+	public static void logStartMethod(String method) {
+		logDebug("START method : " + method);
+	}
+
+	/**
+	 * Log debug end of a method.
+	 * 
+	 * @param method
+	 *            : method name
+	 */
+	public static void logEndMethod(String method) {
+		logDebug("END method : " + method);
 	}
 
 }

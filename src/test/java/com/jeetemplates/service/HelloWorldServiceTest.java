@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.jeetemplates.helloworld.service;
+package com.jeetemplates.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,10 +13,12 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.test.util.ReflectionTestUtils;
 
+import com.jeetemplates.business.model.HelloWorld;
+import com.jeetemplates.business.persistence.HelloWorldDao;
 import com.jeetemplates.common.service.BaseServiceTest;
-import com.jeetemplates.helloworld.model.HelloWorld;
-import com.jeetemplates.helloworld.persistence.HelloWorldDao;
-import com.jeetemplates.helloworld.service.impl.HelloWorldServiceImpl;
+import com.jeetemplates.service.HelloWorldService;
+import com.jeetemplates.service.dto.HelloWorldDTO;
+import com.jeetemplates.service.impl.HelloWorldServiceImpl;
 
 /**
  * Test of {@link HelloWorldService}.
@@ -73,7 +75,7 @@ public class HelloWorldServiceTest extends BaseServiceTest {
 		Mockito.when(helloWorldDao.retrieveAll()).thenReturn(mockResult);
 
 		// Call service
-		List<HelloWorld> result = helloWorldService.retrieveAll();
+		List<HelloWorldDTO> result = helloWorldService.retrieveAll();
 
 		Assert.assertNotNull(result);
 		Assert.assertEquals(1, result.size());

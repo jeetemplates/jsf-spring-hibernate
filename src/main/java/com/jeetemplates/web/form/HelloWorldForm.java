@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.jeetemplates.helloworld.form;
+package com.jeetemplates.web.form;
 
 import javax.faces.bean.ManagedBean;
 

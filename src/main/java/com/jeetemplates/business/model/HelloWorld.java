@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.jeetemplates.helloworld.model;
+package com.jeetemplates.business.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
