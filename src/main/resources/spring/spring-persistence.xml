@@ -15,6 +15,8 @@
 		<property name="minPoolSize" value="${hibernate.c3p0.min_size}" />
 		<property name="maxPoolSize" value="${hibernate.c3p0.max_size}" />
 		<property name="maxStatements" value="${hibernate.c3p0.max_statements}" />
+		<!-- Use to refresh connection -->
+		<!-- Value has to be inferior to the database timeout -->
 		<property name="idleConnectionTestPeriod" value="${hibernate.c3p0.idle_test_period}" />
 	</bean>
 
@@ -34,10 +36,6 @@
 				<entry key="hibernate.format_sql" value="${hibernate.format_sql}" />
 				<entry key="hibernate.hbm2ddl.auto" value="${hibernate.hbm2ddl.auto}" />
 				<entry key="hibernate.temp.use_jdbc_metadata_defaults" value="${hibernate.temp.use_jdbc_metadata_defaults}" />
-				<entry key="hibernate.c3p0.min_size" value="${hibernate.c3p0.min_size}" />
-				<entry key="hibernate.c3p0.max_size" value="${hibernate.c3p0.max_size}" />
-				<entry key="hibernate.c3p0.max_statements" value="${hibernate.c3p0.max_statements}" />
-				<entry key="hibernate.c3p0.idle_test_period" value="${hibernate.c3p0.idle_test_period}" />
 			</map>
 		</property>
 	</bean>
