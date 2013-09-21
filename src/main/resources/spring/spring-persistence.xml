@@ -25,7 +25,7 @@
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<!-- With this, no need to declare persistence.xml -->
-		<property name="packagesToScan" value="com.jeetemplates.*.model" />
+		<property name="packagesToScan" value="com.jeetemplates.app.domain" />
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
 		</property>
