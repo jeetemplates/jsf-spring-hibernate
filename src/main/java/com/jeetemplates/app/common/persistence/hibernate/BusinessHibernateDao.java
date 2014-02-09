@@ -17,7 +17,7 @@ import com.jeetemplates.app.common.persistence.BusinessDao;
  * 
  * @author jeetemplates
  */
-public abstract class BusinessHibernateDao<BE extends BusinessEntity> implements BusinessDao<BE> {
+public abstract class BusinessHibernateDao<ID, BE extends BusinessEntity<ID>> implements BusinessDao<ID, BE> {
 
 	/* ************************************************************** */
 	/* Technical */
@@ -27,7 +27,7 @@ public abstract class BusinessHibernateDao<BE extends BusinessEntity> implements
 	 * Class of BusinessEntity
 	 */
 	@SuppressWarnings("unchecked")
-	private Class<BE> persistentClass = (Class<BE>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+	private Class<BE> persistentClass = (Class<BE>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[1];
 
 	/* ************************************************************** */
 	/* Dependencies */
@@ -47,7 +47,7 @@ public abstract class BusinessHibernateDao<BE extends BusinessEntity> implements
 	}
 
 	@Override
-	public BE retrieveById(final Long id) {
+	public BE retrieveById(final ID id) {
 		return entityManager.find(persistentClass, id);
 	}
 
@@ -69,7 +69,7 @@ public abstract class BusinessHibernateDao<BE extends BusinessEntity> implements
 	}
 
 	@Override
-	public void deleteById(final Long id) {
+	public void deleteById(final ID id) {
 		entityManager.remove(retrieveById(id));
 	}
 

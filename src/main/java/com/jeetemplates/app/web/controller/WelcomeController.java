@@ -5,15 +5,14 @@ package com.jeetemplates.app.web.controller;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.FacesException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 
 import com.jeetemplates.app.domain.HelloWorld;
 import com.jeetemplates.app.service.HelloWorldService;
-import com.jeetemplates.app.service.dto.HelloWorldDTO;
 import com.jeetemplates.app.util.LoggerUtils;
-import com.jeetemplates.app.util.MapperUtils;
 import com.jeetemplates.app.web.form.HelloWorldForm;
 
 /**
@@ -24,77 +23,112 @@ import com.jeetemplates.app.web.form.HelloWorldForm;
 @ManagedBean
 public class WelcomeController {
 
-	/* ************************************ */
-	/* Dependencies */
-	/* ************************************ */
+    /* ************************************ */
+    /* Dependencies */
+    /* ************************************ */
 
-	/**
-	 * {@link HelloWorldService}
-	 */
-	@ManagedProperty(value = HelloWorldService.EL_NAME)
-	private HelloWorldService helloWorldService;
+    /**
+     * {@link HelloWorldService}
+     */
+    @ManagedProperty(value = HelloWorldService.EL_NAME)
+    private HelloWorldService helloWorldService;
 
-	/**
-	 * {@link HelloWorldService}
-	 */
-	@ManagedProperty(value = HelloWorldForm.EL_NAME)
-	private HelloWorldForm helloWorldForm;
+    /**
+     * {@link HelloWorldService}
+     */
+    @ManagedProperty(value = HelloWorldForm.EL_NAME)
+    private HelloWorldForm helloWorldForm;
 
-	/* ************************************ */
-	/* Attributes */
-	/* ************************************ */
+    /* ************************************ */
+    /* Attributes */
+    /* ************************************ */
 
-	/**
-	 * List of hellos
-	 */
-	private List<HelloWorldDTO> listHellos;
+    /**
+     * List of hellos
+     */
+    private List<HelloWorld> hellos;
 
-	/* ************************************ */
-	/* Methods */
-	/* ************************************ */
+    /* ************************************ */
+    /* Methods */
+    /* ************************************ */
 
-	public String createHello() {
-		helloWorldService.create((HelloWorld) MapperUtils.map(helloWorldForm, HelloWorld.class));
-		return "welcome?faces-redirect=true";
-	}
+    /**
+     * Init.
+     */
+    @PostConstruct
+    public void init() {
+        LoggerUtils.logDebug("Initialize hello world list for display");
+        hellos = helloWorldService.retrieveAll();
+    }
 
-	/**
-	 * Retrieve hello dto
-	 * 
-	 * @return list of hello dto
-	 */
-	public List<HelloWorldDTO> retrieveList() {
-		// Prevent multiple calls from JSF
-		if (listHellos == null) {
-			LoggerUtils.logDebug("Initialize hello world list for display");
-			listHellos = helloWorldService.retrieveAll();
-		}
-		return listHellos;
-	}
+    /**
+     * Create hello.
+     * 
+     * @return welcome page
+     */
+    public String createHello() {
+        HelloWorld entity = new HelloWorld();
+        entity.setFirstName(helloWorldForm.getFirstName());
+        entity.setLastName(helloWorldForm.getLastName());
+        helloWorldService.create(entity);
+        return "welcome?faces-redirect=true";
+    }
 
-	/**
-	 * Throw {@link FacesException}.
-	 * 
-	 * @return outcome "welcome"
-	 */
-	public String throwException() {
-		throw new FacesException();
-	}
+    /**
+     * Throw {@link FacesException}.
+     * 
+     * @return outcome "welcome"
+     */
+    public String throwException() {
+        throw new FacesException();
+    }
 
-	/* ************************************ */
-	/* Getters & Setters */
-	/* ************************************ */
+    /* ************************************ */
+    /* Getters & Setters */
+    /* ************************************ */
+    /**
+     * @return the helloWorldService
+     */
+    public HelloWorldService getHelloWorldService() {
+        return helloWorldService;
+    }
 
-	public void setHelloWorldForm(HelloWorldForm helloWorldForm) {
-		this.helloWorldForm = helloWorldForm;
-	}
+    /**
+     * @param helloWorldService
+     *            the helloWorldService to set
+     */
+    public void setHelloWorldService(HelloWorldService helloWorldService) {
+        this.helloWorldService = helloWorldService;
+    }
 
-	public HelloWorldService getHelloWorldService() {
-		return helloWorldService;
-	}
+    /**
+     * @return the helloWorldForm
+     */
+    public HelloWorldForm getHelloWorldForm() {
+        return helloWorldForm;
+    }
 
-	public void setHelloWorldService(HelloWorldService helloWorldService) {
-		this.helloWorldService = helloWorldService;
-	}
+    /**
+     * @param helloWorldForm
+     *            the helloWorldForm to set
+     */
+    public void setHelloWorldForm(HelloWorldForm helloWorldForm) {
+        this.helloWorldForm = helloWorldForm;
+    }
+
+    /**
+     * @return the hellos
+     */
+    public List<HelloWorld> getHellos() {
+        return hellos;
+    }
+
+    /**
+     * @param hellos
+     *            the hellos to set
+     */
+    public void setHellos(List<HelloWorld> hellos) {
+        this.hellos = hellos;
+    }
 
 }

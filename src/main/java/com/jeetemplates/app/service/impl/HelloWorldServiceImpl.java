@@ -13,9 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.jeetemplates.app.domain.HelloWorld;
 import com.jeetemplates.app.persistence.HelloWorldDao;
 import com.jeetemplates.app.service.HelloWorldService;
-import com.jeetemplates.app.service.dto.HelloWorldDTO;
 import com.jeetemplates.app.util.LoggerUtils;
-import com.jeetemplates.app.util.MapperUtils;
 
 /**
  * Implementation of {@link HelloWorldService}
@@ -49,13 +47,11 @@ public class HelloWorldServiceImpl implements HelloWorldService {
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-	public List<HelloWorldDTO> retrieveAll() {
+	public List<HelloWorld> retrieveAll() {
 		LoggerUtils.logStartMethod("retrieveAll");
 		List<HelloWorld> listEntities = helloWorldDao.retrieveAll();
-		@SuppressWarnings("unchecked")
-		List<HelloWorldDTO> returnValue = (List<HelloWorldDTO>) MapperUtils.mapAsList(listEntities, HelloWorldDTO.class);
 		LoggerUtils.logEndMethod("retrieveAll");
-		return returnValue;
+		return listEntities;
 	}
 
 }

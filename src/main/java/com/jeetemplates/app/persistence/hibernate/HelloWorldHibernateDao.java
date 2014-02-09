@@ -15,6 +15,6 @@ import com.jeetemplates.app.persistence.HelloWorldDao;
  * @author jeetemplates
  */
 @Repository
-public class HelloWorldHibernateDao extends BusinessHibernateDao<HelloWorld> implements HelloWorldDao {
+public class HelloWorldHibernateDao extends BusinessHibernateDao<Long, HelloWorld> implements HelloWorldDao {
 
 }

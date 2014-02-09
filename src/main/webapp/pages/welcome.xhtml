@@ -2,8 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 <h:head>
 	<title><h:outputText value="#{i18n['welcome.head.title']}" /></title>
@@ -14,7 +15,7 @@
 		<ui:define name="content">
 			<h3><h:outputText value="#{i18n['welcome.content.title']}" /></h3>
 			<h4>
-				<h:dataTable value="#{welcomeController.retrieveList()}" var="hello">
+				<h:dataTable value="#{welcomeController.hellos}" var="hello">
 					<h:column>#{hello.firstName}</h:column>
 					<h:column>#{hello.lastName}</h:column>
 				</h:dataTable>
