@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.jeetemplates.app.common.persistence.hibernate;
+package com.jeetemplates.app.common.persistence.jpa;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
@@ -17,7 +17,7 @@ import com.jeetemplates.app.common.persistence.BusinessDao;
  * 
  * @author jeetemplates
  */
-public abstract class BusinessHibernateDao<ID, BE extends BusinessEntity<ID>> implements BusinessDao<ID, BE> {
+public abstract class JpaBusinessDao<ID, BE extends BusinessEntity<ID>> implements BusinessDao<ID, BE> {
 
 	/* ************************************************************** */
 	/* Technical */

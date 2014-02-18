@@ -3,30 +3,19 @@
  */
 package com.jeetemplates.app.web.controller;
 
-import java.util.List;
-
-import javax.annotation.PostConstruct;
+import javax.faces.FacesException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.jeetemplates.app.domain.HelloWorld;
 import com.jeetemplates.app.service.HelloWorldService;
+import com.jeetemplates.app.web.form.HelloWorldForm;
 
 /**
- * Welcome controller.
- * 
  * @author jeetemplates
  */
 @ManagedBean
-public class WelcomeController {
-    
-    /**
-     * Logger.
-     */
-    private static final Logger logger = LoggerFactory.getLogger(WelcomeController.class);
+public class HomeController {
 
     /* ************************************ */
     /* Dependencies */
@@ -38,26 +27,36 @@ public class WelcomeController {
     @ManagedProperty(value = HelloWorldService.EL_NAME)
     private HelloWorldService helloWorldService;
 
-    /* ************************************ */
-    /* Attributes */
-    /* ************************************ */
-
     /**
-     * List of hellos
+     * {@link HelloWorldService}
      */
-    private List<HelloWorld> hellos;
+    @ManagedProperty(value = HelloWorldForm.EL_NAME)
+    private HelloWorldForm helloWorldForm;
 
     /* ************************************ */
     /* Methods */
     /* ************************************ */
 
     /**
-     * Init.
+     * Create hello.
+     * 
+     * @return welcome page
      */
-    @PostConstruct
-    public void init() {
-        logger.debug("Initialize hello world list for display");
-        hellos = helloWorldService.retrieveAll();
+    public String createHello() {
+        HelloWorld entity = new HelloWorld();
+        entity.setFirstName(helloWorldForm.getFirstName());
+        entity.setLastName(helloWorldForm.getLastName());
+        helloWorldService.create(entity);
+        return "welcome?faces-redirect=true";
+    }
+
+    /**
+     * Throw {@link FacesException}.
+     * 
+     * @return outcome "welcome"
+     */
+    public String throwException() {
+        throw new FacesException();
     }
 
     /* ************************************ */
@@ -79,18 +78,17 @@ public class WelcomeController {
     }
 
     /**
-     * @return the hellos
+     * @return the helloWorldForm
      */
-    public List<HelloWorld> getHellos() {
-        return hellos;
+    public HelloWorldForm getHelloWorldForm() {
+        return helloWorldForm;
     }
 
     /**
-     * @param hellos
-     *            the hellos to set
+     * @param helloWorldForm
+     *            the helloWorldForm to set
      */
-    public void setHellos(List<HelloWorld> hellos) {
-        this.hellos = hellos;
+    public void setHelloWorldForm(HelloWorldForm helloWorldForm) {
+        this.helloWorldForm = helloWorldForm;
     }
-
 }

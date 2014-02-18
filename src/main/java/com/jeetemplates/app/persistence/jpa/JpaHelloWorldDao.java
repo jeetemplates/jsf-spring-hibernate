@@ -1,11 +1,11 @@
 /**
  * 
  */
-package com.jeetemplates.app.persistence.hibernate;
+package com.jeetemplates.app.persistence.jpa;
 
 import org.springframework.stereotype.Repository;
 
-import com.jeetemplates.app.common.persistence.hibernate.BusinessHibernateDao;
+import com.jeetemplates.app.common.persistence.jpa.JpaBusinessDao;
 import com.jeetemplates.app.domain.HelloWorld;
 import com.jeetemplates.app.persistence.HelloWorldDao;
 
@@ -15,6 +15,6 @@ import com.jeetemplates.app.persistence.HelloWorldDao;
  * @author jeetemplates
  */
 @Repository
-public class HelloWorldHibernateDao extends BusinessHibernateDao<Long, HelloWorld> implements HelloWorldDao {
+public class JpaHelloWorldDao extends JpaBusinessDao<Long, HelloWorld> implements HelloWorldDao {
 
 }

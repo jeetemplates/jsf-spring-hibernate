@@ -20,11 +20,11 @@
 				<br/>
 				<h:outputText value="#{i18n['home.content.form.last_name']}" /> : <h:inputText value="#{helloWorldForm.lastName}"></h:inputText>
 				<br/>
-				<h:commandButton value="#{i18n['home.content.form.add']}" action="#{welcomeController.createHello()}" />
+				<h:commandButton value="#{i18n['home.content.form.add']}" action="#{homeController.createHello}" />
 			</h:form>
 			<br/>
 			<h:form>
-				<h:commandButton value="#{i18n['home.content.form.throw_exception']}" action="#{welcomeController.throwException()}" />
+				<h:commandButton value="#{i18n['home.content.form.throw_exception']}" action="#{homeController.throwException}" />
 			</h:form>
 		</ui:define>
 	</ui:composition>

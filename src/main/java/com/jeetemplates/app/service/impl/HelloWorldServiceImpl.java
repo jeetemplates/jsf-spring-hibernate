@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.jeetemplates.app.domain.HelloWorld;
 import com.jeetemplates.app.persistence.HelloWorldDao;
 import com.jeetemplates.app.service.HelloWorldService;
-import com.jeetemplates.app.util.LoggerUtils;
 
 /**
  * Implementation of {@link HelloWorldService}
@@ -23,35 +22,31 @@ import com.jeetemplates.app.util.LoggerUtils;
 @Service(HelloWorldService.BEAN_NAME)
 public class HelloWorldServiceImpl implements HelloWorldService {
 
-	/* ************************************ */
-	/* Dependencies */
-	/* ************************************ */
+    /* ************************************ */
+    /* Dependencies */
+    /* ************************************ */
 
-	/**
-	 * {@link HelloWorldDao}
-	 */
+    /**
+     * {@link HelloWorldDao}
+     */
     @Autowired
-	private HelloWorldDao helloWorldDao;
+    private HelloWorldDao helloWorldDao;
 
-	/* ************************************ */
-	/* Methods */
-	/* ************************************ */
+    /* ************************************ */
+    /* Methods */
+    /* ************************************ */
 
-	@Override
-	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
-	public void create(HelloWorld entity) {
-		LoggerUtils.logStartMethod("create");
-		helloWorldDao.create(entity);
-		LoggerUtils.logEndMethod("create");
-	}
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+    public void create(HelloWorld entity) {
+        helloWorldDao.create(entity);
+    }
 
-	@Override
-	@Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-	public List<HelloWorld> retrieveAll() {
-		LoggerUtils.logStartMethod("retrieveAll");
-		List<HelloWorld> listEntities = helloWorldDao.retrieveAll();
-		LoggerUtils.logEndMethod("retrieveAll");
-		return listEntities;
-	}
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+    public List<HelloWorld> retrieveAll() {
+        List<HelloWorld> listEntities = helloWorldDao.retrieveAll();
+        return listEntities;
+    }
 
 }
