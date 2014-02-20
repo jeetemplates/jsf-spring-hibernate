@@ -11,8 +11,8 @@ import org.springframework.context.annotation.PropertySources;
  * @author jeetemplates
  */
 @org.springframework.context.annotation.Configuration
-@PropertySources(value = { @PropertySource(value = "classpath:/persistence/datasource.properties"), @PropertySource(value = "classpath:/persistence/hibernate.properties") })
+@PropertySources(value = { @PropertySource(value = "classpath:/persistence/test-datasource.properties"), @PropertySource(value = "classpath:/persistence/hibernate.properties") })
 @Import(value = BasicConfiguration.class)
-public class Configuration {
+public class ConfigurationTest {
 
 }

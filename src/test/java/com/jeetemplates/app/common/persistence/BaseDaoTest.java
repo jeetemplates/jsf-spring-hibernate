@@ -19,55 +19,57 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.jeetemplates.app.spring.ConfigurationTest;
+
 /**
  * Base class for dao test.
  * 
  * @author jeetemplates
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/test-spring-global.xml" })
+@ContextConfiguration(classes = ConfigurationTest.class)
 public abstract class BaseDaoTest extends DBTestCase {
 
-	/**
-	 * {@link DataSource} : datasource.
-	 */
+    /**
+     * {@link DataSource} : datasource.
+     */
     @Autowired
-	private DataSource datasource;
+    private DataSource datasource;
 
-	/**
-	 * {@link Connection} : connection.
-	 */
-	private Connection connection;
+    /**
+     * {@link Connection} : connection.
+     */
+    private Connection connection;
 
-	/**
-	 * {@link IDatabaseConnection} : DBUnit connection.
-	 */
-	private IDatabaseConnection dbunitConnection;
+    /**
+     * {@link IDatabaseConnection} : DBUnit connection.
+     */
+    private IDatabaseConnection dbunitConnection;
 
-	/**
-	 * Init test.
-	 * 
-	 * @throws Exception
-	 * @throws SQLException
-	 */
-	@Before
-	public void init() throws SQLException, Exception {
-		connection = datasource.getConnection();
-		dbunitConnection = new HsqldbConnection(connection, null);
-		DatabaseOperation.CLEAN_INSERT.execute(dbunitConnection, getDataSet());
-	}
+    /**
+     * Init test.
+     * 
+     * @throws Exception
+     * @throws SQLException
+     */
+    @Before
+    public void init() throws SQLException, Exception {
+        connection = datasource.getConnection();
+        dbunitConnection = new HsqldbConnection(connection, null);
+        DatabaseOperation.CLEAN_INSERT.execute(dbunitConnection, getDataSet());
+    }
 
-	/**
-	 * Clean test.
-	 * 
-	 * @throws SQLException
-	 */
-	@After
-	public void clean() throws SQLException {
-		// Close database connection after each method to avoid problem with a
-		// lot of tests
-		dbunitConnection.close();
-		connection.close();
-	}
+    /**
+     * Clean test.
+     * 
+     * @throws SQLException
+     */
+    @After
+    public void clean() throws SQLException {
+        // Close database connection after each method to avoid problem with a
+        // lot of tests
+        dbunitConnection.close();
+        connection.close();
+    }
 
 }
