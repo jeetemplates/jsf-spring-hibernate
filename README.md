@@ -17,4 +17,3 @@ Frameworks
 JSF 2.2 works (out of the box) with Tomcat 7 but not with JBoss 7.1
 
 Demonstration available at http://jsf-spring-hibernate.paoesco.cloudbees.net/
- 
