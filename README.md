@@ -14,5 +14,3 @@ Frameworks
 - Tomcat 8
 - Spring IO Platform (JSF, Hibernate, Spring Data, see here http://docs.spring.io/platform/docs/1.1.1.RELEASE/reference/htmlsingle/)
 
-
-Demonstration available at https://jsf-spring-hibernate.herokuapp.com/
