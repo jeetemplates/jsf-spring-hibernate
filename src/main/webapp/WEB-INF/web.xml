@@ -51,22 +51,12 @@
     <!-- Map these files with JSF -->
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
-        <url-pattern>*.jsf</url-pattern>
+        <url-pattern>/faces/*</url-pattern>
     </servlet-mapping>
 
     <!-- Welcome page -->
     <welcome-file-list>
-        <welcome-file>pages/home.jsf</welcome-file>
+        <welcome-file>faces/home.xhtml</welcome-file>
     </welcome-file-list>
-
-    <!-- Protect xhtml files -->
-    <security-constraint>
-        <display-name>Restrict raw XHTML Documents</display-name>
-        <web-resource-collection>
-            <web-resource-name>XHTML</web-resource-name>
-            <url-pattern>*.xhtml</url-pattern>
-        </web-resource-collection>
-        <auth-constraint />
-    </security-constraint>
 
 </web-app>

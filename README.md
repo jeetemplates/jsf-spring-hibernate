@@ -14,3 +14,4 @@ Frameworks
 - Tomcat 8 / Jetty 9
 - Spring IO Platform (JSF, Hibernate, Spring Data, see here http://docs.spring.io/platform/docs/1.1.1.RELEASE/reference/htmlsingle/)
 
+Home page : http://localhost:8080/jsf-spring-hibernate/faces/home.xhtml

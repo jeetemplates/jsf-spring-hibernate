@@ -83,12 +83,12 @@ public class DefaultExceptionHandler extends ExceptionHandlerWrapper {
                             session.invalidate();
                         }
                         // redirect to the login page
-                        redirectPage = "/pages/home.jsf?faces-redirect=true";
+                        redirectPage = "/faces/home.xhtml?faces-redirect=true";
                     } else {
                         // custom handling of unexpected exceptions can be done
                         // in the method handleUnexpected
                         String messageKey = handleUnexpected(fc, t);
-                        redirectPage = "/pages/error.jsf?faces-redirect=true&errorCode=" + messageKey;
+                        redirectPage = "/faces/error.xhtml?faces-redirect=true&errorCode=" + messageKey;
                         fc.getExternalContext().getSessionMap().put(DefaultExceptionHandler.ERROR_MESSAGE, t.getLocalizedMessage());
                     }
                 } finally {
