@@ -1,9 +1,8 @@
 /**
  *
  */
-package com.jeetemplates.app.spring;
+package com.jeetemplates.app.conf;
 
-import com.jeetemplates.app.conf.BasicConfiguration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
@@ -13,8 +12,8 @@ import org.springframework.context.annotation.PropertySources;
  */
 @org.springframework.context.annotation.Configuration
 @PropertySources(value = {
-    @PropertySource(value = "classpath:/test-conf.properties")})
+    @PropertySource(value = "classpath:/conf.properties")})
 @Import(value = BasicConfiguration.class)
-public class ConfigurationTest {
+public class Configuration {
 
 }

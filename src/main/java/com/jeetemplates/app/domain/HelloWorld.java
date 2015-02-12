@@ -1,68 +1,58 @@
 /**
- * 
+ *
  */
 package com.jeetemplates.app.domain;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Table;
 
-import com.jeetemplates.app.common.domain.BusinessEntity;
+import java.io.Serializable;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /**
  * Hello entity.
- * 
+ *
  * @author jeetemplates
  */
 @Entity
-@Table(name = "HELLO_WORLD")
-public class HelloWorld extends BusinessEntity<Long> {
+public class HelloWorld implements Serializable {
 
-	/**
-	 * Serial UID.
-	 */
-	private static final long serialVersionUID = 1874597988200405724L;
+    @Id
+    @GeneratedValue
+    private Long id;
 
-	/**
-	 * Last name.
-	 */
-	private String lastName;
+    /**
+     * Last name.
+     */
+    private String lastName;
 
-	/**
-	 * First name.
-	 */
-	private String firstName;
+    /**
+     * First name.
+     */
+    private String firstName;
 
-	/**
-	 * @return the lastName
-	 */
-	@Column(name = "LAST_NAME")
-	public String getLastName() {
-		return lastName;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	/**
-	 * @param lastName
-	 *            the lastName to set
-	 */
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	/**
-	 * @return the firstName
-	 */
-	@Column(name = "FIRST_NAME")
-	public String getFirstName() {
-		return firstName;
-	}
+    public String getLastName() {
+        return lastName;
+    }
 
-	/**
-	 * @param firstName
-	 *            the firstName to set
-	 */
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
 }
